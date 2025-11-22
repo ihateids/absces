@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oneskorené hojenie perianálneho abscesu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .intro-text {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .intro-text p {
+            margin-bottom: 15px;
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-text h3 {
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .intro-text strong {
+            color: #764ba2;
+            font-weight: 600;
+        }
+
+        .intro-text ul {
+            margin: 10px 0 15px 20px;
+            list-style-type: disc;
+        }
+
+        .intro-text li {
+            margin-bottom: 8px;
+        }
+
+        .intro-text .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .intro-text .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .intro-text .success {
+            background-color: #d4edda;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .reverse-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .reverse-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+        }
+
+        .reverse-button:active {
+            transform: translateY(0);
+        }
+
+        .reverse-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+
+        .reverse-button.reversed .reverse-icon {
+            transform: rotate(180deg);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin: 30px 0 0 0;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .section-subtitle {
+            font-size: 1.1em;
+            color: white;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-style: italic;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .section-title + .section-subtitle {
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .day-section {
+            margin-bottom: 25px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .day-header {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .images-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .image-card {
+            background-color: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .image-info {
+            padding: 8px 10px;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .image-filename {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 0.8em;
+            margin-bottom: 3px;
+        }
+
+        .image-day {
+            color: #7f8c8d;
+            font-size: 0.75em;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            display: block;
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 100%;
+            max-height: calc(90vh - 100px);
+            object-fit: contain;
+            display: block;
+            transition: max-width 0.3s ease, max-height 0.3s ease;
+        }
+
+        .lightbox-content {
+            cursor: zoom-in;
+        }
+
+        .lightbox-content.zoomed {
+            max-width: none;
+            max-height: none;
+            width: auto;
+            height: auto;
+            cursor: grab;
+            user-select: none;
+            pointer-events: auto;
+        }
+
+        .lightbox-content.zoomed:active {
+            cursor: grabbing;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1002;
+        }
+
+        .lightbox-close:hover {
+            color: #3498db;
+        }
+
+        .lightbox-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 85%;
+            max-height: 90vh;
+            pointer-events: none;
+        }
+
+        .lightbox-container.zoomed {
+            max-width: 90%;
+            max-height: 85vh;
+            overflow: auto;
+            align-items: flex-start;
+            justify-content: flex-start;
+            pointer-events: auto;
+        }
+
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 20px;
+            user-select: none;
+            transition: color 0.3s, background-color 0.3s;
+            z-index: 1002;
+            background-color: rgba(0,0,0,0.3);
+            border-radius: 5px;
+        }
+
+        .lightbox-arrow:hover {
+            color: #3498db;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-zoom-icon {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1002;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .lightbox-zoom-icon:hover {
+            background-color: rgba(52, 152, 219, 0.9);
+            transform: scale(1.1);
+            border-color: white;
+        }
+
+        .lightbox-zoom-icon:active {
+            transform: scale(0.95);
+        }
+
+        .zoom-controls {
+            position: absolute;
+            bottom: 90px;
+            right: 30px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1002;
+        }
+
+        .zoom-controls.active {
+            display: flex;
+        }
+
+        .zoom-control-btn {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            user-select: none;
+        }
+
+        .zoom-control-btn:hover {
+            background-color: rgba(52, 152, 219, 0.9);
+            transform: scale(1.1);
+            border-color: white;
+        }
+
+        .zoom-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .lightbox-info {
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            min-width: 300px;
+            pointer-events: auto;
+            flex-shrink: 0;
+        }
+
+        .lightbox-filename {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .lightbox-day {
+            font-size: 0.95em;
+            color: #ddd;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .reverse-button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+                padding: 12px 15px;
+                margin: 20px 0 0 0;
+            }
+
+            .section-subtitle {
+                font-size: 1em;
+                padding: 10px 15px;
+                margin-bottom: 15px;
+            }
+
+            .day-header {
+                font-size: 1.4em;
+            }
+
+            .images-row {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 8px;
+            }
+
+            .image-card img {
+                height: 180px;
+            }
+
+            .day-section {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .images-row {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-arrow {
+                font-size: 35px;
+                padding: 10px;
+            }
+
+            .lightbox-prev {
+                left: 5px;
+            }
+
+            .lightbox-next {
+                right: 5px;
+            }
+
+            .lightbox-close {
+                right: 10px;
+                font-size: 30px;
+            }
+
+            .lightbox-zoom-icon {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .zoom-controls {
+                bottom: 75px;
+                right: 20px;
+            }
+
+            .zoom-control-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 24px;
+            }
+
+            .lightbox-container {
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oneskorené hojenie perianálneho abscesu</h1>
+        
+        <div class="intro-text">
+            <p>Tento príbeh začína po takmer <strong>4 mesiacoch</strong> od vzniku perianálneho abscesu a jeho oneskoreného hojenia.
+                Začiatkom júla mi chirurg spravil incíziu a drenáž abscesu, čo však neviedlo k očakávaným výsledkom.
+                Po asi 3 týždňoch ma iný chirurg (lebo takto to v na tej poliklinike chodí) poslal domov s tým, že je rana uzavretá.
+                Rana ale nebola vôbec uzavretá, naďalej sa tvoril výtok a rana sa nehojila. Tak som navštívil súkromnú proktologickú ambulanciu.</p>
+            
+            <p>Tam mi doktor zistil, že nielen že rana nie je uzavretá, ale navyše tam ešte stále všetko nevytieklo, čo malo.
+                Tak mi nasadil ďalšie ATB a odporučil 2× denne Gafrovo-ichtiolovú masť.
+                Po ďalších 3 týždňoch pri kontrole skonštatoval, že už všetko, čo tam bolo, vytieklo a už treba len zahojiť ranu,
+                lebo tam stále bol malý výtok. Tak mi nasadil ďalšie ATB a opäť rovnako masť na gázu.</p>
+
+            <p>
+                September až október: Kontroly ukazovali, že sa rana stále nehojí. Dostal som ďalšie a ďalšie ATB s rovnakou masťou.
+                Nakoniec doktor povedal, že treba spraviť u všeobecného lekára výter a podľa toho nasadiť ATB.
+            </p>
+
+            <p>Výsledok výteru: Okrem iných bežne prítomných baktérií v perianálnej oblasti sa zistil aj <strong>zlatý stafylokok</strong>. 
+                Môj všeobecný lekár mi predpísal ďalšie ATB, v poradí 4. Po dobraní ATB a opätovnom výtere sa 
+                opäť zistil zlatý stafylokok. Všeobecný lekár povedal, že on nevie, čo s tým, že sa mám obrátiť na toho proktológa.
+                Tomu som volal, aby som mu to povedal, lebo som už bol z toho zúfalý. Ten mi povedal, že treba ďalšie ATB (<strong>piate v poradí</strong>).</p>
+            
+            <p>To som si už povedal, že to nie je možné, a začal som skúmať alternatívne riešenia. Literatúra hovorí,
+                že ATB by sa mali predpisovať v prípade skutočnej systémovej infekcie. V mojom prípade tam ale systémovo nebolo zistené nič,
+                dokonca aj CRP krvi úplne v norme aj celkový krvný obraz.</p>
+
+            <p>Tak som študoval ďalej a zistil som, že zlatý stafylokok je bežný bakteriálny druh, ktorý sa nachádza na koži a slizniciach.
+                Avšak ak si vytvorí biofilm, môže spôsobiť chronickú infekciu, ktorá je odolná voči ATB. No a tu mi suseda lekárnička 
+                poradila, aby som skúsil <strong>lokálnu liečbu striebrom a kyselinou hyalurónovou</strong>, ktoré sú známe svojimi antibakteriálnymi a hojivými vlastnosťami.</p>
+
+            <div class="success">
+                <strong>Prvý pozitívny progres:</strong> Ranu som začal ošetrovať lokálne, a hneď po prvom použití vznikol 
+                zlatistý výtok, čo je známka, že striebro začalo zaberať na zlatého stafylokoka. Postupne sa rana začala čistiť a výtok menil farbu 
+                z jantárového na ružovú, čo je už známka tvorby nového tkaniva - <strong>granulácie</strong>.
+            </div>
+
+            <p>Následne som sa dočítal, že existuje pojem <strong>pozastavené hojenie rany</strong>.
+                K tomu dochádza, keď sa rana čistí a telo sa snaží vytvoriť nové tkanivo, ale nie je schopné dokončiť proces hojenia napr. kvôli bakteriálnej záťaži 
+                alebo mechanickému dráždeniu rany. Preto je dôležité minimalizovať všetky faktory, ktoré môžu proces hojenia narúšať.</p>
+
+            <div class="important">
+                <p><strong>Pri perianálnych ranách je veľmi dôležité nepôsobiť na ranu tlakom a minimalizovať:</strong></p>
+                <ul>
+                    <li>Sedenie</li>
+                    <li>Potenie</li>
+                    <li>Trenie</li>
+                    <li>Tlaky</li>
+                </ul>
+            </div>
+
+            <p>Toto mi žiaľ môj proktológ nikdy nepovedal a z neznámeho dôvodu ma dokonca povzbudzoval, že môžem robiť úplne všetko. 
+                Spomínam si, ako sa čudoval, keď som mu povedal, že chirurg, ktorý mi robil drenáž, mi odporúčal nesedieť.
+                Dokonca, že môžem ísť aj do mora. Tak som si uvedomil, že ja som si vlastne pozastavil hojenie sám, pretože:</p>
+
+            <ul>
+                <li><strong>August</strong> - dovolenka pri mori - tu som bol aspoň opatrný, že som nezliezol do mora, aby sa mi tam nedostal piesok. Ale rana bola stále prepotená, bylo strašne teplo celé dni aj v noci.</li>
+                <li><strong>September</strong> - home office, nadčasy, nekonečné sedenie na stoličke - zásadná chyba,
+                     podľa literatúry, <strong>kľúčová vec je nesedieť alebo minimalizovať sedenie pri hojení rany v tejto oblasti</strong></li>
+                <li><strong>Október</strong> - podobne home office, stále ATB a gafrovo-ichtiolová masť</li>
+            </ul>
+
+
+            <p>Koncom októbra som to zobral do vlastných rúk a prestal som sa úplne spoliehať na lekárov.
+                Postupne som zistil, že existujú 2 spôsoby, ako hojiť ranu:</p>
+
+            <div class="highlight">
+                <p><strong>Vlhké hojenie rany</strong> - rana sa udržiava vlhká pomocou špeciálnych mastí a obkladov, čo podporuje tvorbu nového tkaniva a zabraňuje tvorbe strupov</p>
+                <p><strong>Suché hojenie rany</strong> - rana sa necháva na vzduchu alebo sa prikrýva suchými obkladmi, čo podporuje tvorbu strupov a chráni ranu pred vonkajšími vplyvmi</p>
+            </div>
+
+            <p>Pri perianálnych ranách je zlatým štandardom práve <strong>vlhké hojenie rany</strong>. Žiadne vetranie na sucho a čakanie na chrastu. Tá sa vie v tejto oblasti veľmi 
+                ľahko narušiť. Takže žiadna suchá gáza, ale vytvárať vlhké (nie mokré) prostredie, kým sa nedosiahne granulácia (rast tkaniva) a začne sa tvoriť epitel
+                (tenká vrstva, ktorá prekryje tkanivo).</p>
+            
+            <p>Vtedy je možné prejsť na suché hojenie rany, aby sa podporila tvorba strupu a dokončilo sa hojenie. Stále treba ranu chrániť, 
+                napr. pomocou parafínovej náplasti <strong>Grassolind neutral</strong>. Tá bráni prilepnutiu rany na náplasť a zároveň udržiava ranu suchú.</p>
+
+            <p>Takže som doslova prestal sedieť (a aj ležať na chrbte, aby som netlačil na ranu), začal som používať kyselinu hyaluronovú so striebrom (<strong>Ialugen plus</strong>) na vlhké hojenie rany,
+                a rana sa začala konečne čistiť a hojiť. Postupne sa výtok zmenšoval a menil farbu z jantárového na ružovú,
+                čo je známka tvorby nového tkaniva - granulácie. Vtedy som prvýkrát videl, že sa niečo reálne deje. Dovtedy sa rana len donekonečna čistila, stále len žlto-jantárový výtok. Keď sa rana začala uzatvárať a výtok minimalizoval, prešiel som na suché hojenie rany
+                pomocou parafínovej náplasti Grassolind neutral. Zatiaľ stále bojujem s tým, že epitel ešte nie je úplne zrelý a ľahko sa poškodzuje.
+            
+            <p>
+                Naposledy som prišiel na to, že aj silnejší prúd vody dokáže jemný povrchový epitel narušiť a rane trvá asi týždeň, kým sa to opäť vráti. Rovnako treba sprchovať len v podrepe, nikdy nie v drepe aby sa rana nenarušila. Je to doslova niekedy ako nekonečný príbeh.</p>
+            <p>        
+            
+                <p>Hojenie takejto rany nie je lineárne. Raz je výtoku viac, raz menej. Je treba sledovať celkový trend nie výtok za jeden deň. </p>
+            
+            <p>Táto časť môjho života ma stojí veľmi veľa psychických síl a trpezlivosti. Postupne sem pridávam fotodokumentáciu z hojenia.
+                Možno to pomôže niekomu inému v podobnej situácii. Aj ja by som bol rád, keby som mal niečo také k dispozícii, keď som to potreboval.
+            </p>
+
+            <I>MK</I>
+        </div>
+        
+        <div class="controls">
+            <button class="reverse-button" id="reverseButton">
+                <span class="reverse-icon">↓</span>
+                <span id="orderText">Najnovšie prvé</span>
+            </button>
+        </div>
+        <div id="gallery"></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-zoom-icon" id="zoom-icon" title="Zoom originál">🔍</span>
+        <div class="zoom-controls" id="zoom-controls">
+            <div class="zoom-control-btn" id="zoom-in-btn" title="Zväčšiť">+</div>
+            <div class="zoom-control-btn" id="zoom-out-btn" title="Zmenšiť">−</div>
+        </div>
+        <span class="lightbox-arrow lightbox-prev">&#10094;</span>
+        <span class="lightbox-arrow lightbox-next">&#10095;</span>
+        <div class="lightbox-container" id="lightbox-container">
+            <img class="lightbox-content" id="lightbox-img">
+            <div class="lightbox-info">
+                <div class="lightbox-filename" id="lightbox-filename"></div>
+                <div class="lightbox-day" id="lightbox-day"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Content warning functionality
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = `expires=${date.toUTCString()}`;
+            document.cookie = `${name}=${value};${expires};path=/`;
+        }
+
+        function showContentWarning() {
+            const accepted = getCookie('contentWarningAccepted');
+            if (!accepted) {
+                const userAccepted = confirm(
+                    'UPOZORNENIE: Táto stránka obsahuje lekárske fotografie, ktoré môžu byť pre niektorých ľudí znepokojujúce alebo nepríjemné.\n\n' +
+                    'Fotografie zobrazujú hojenie perianálnej rany a môžu obsahovať citlivý obsah.\n\n' +
+                    'Kliknutím na OK potvrdzujete, že chcete pokračovať.'
+                );
+                
+                if (userAccepted) {
+                    setCookie('contentWarningAccepted', 'true', 30); // Cookie valid for 30 days
+                } else {
+                    // Redirect to a blank page or close window if user declines
+                    window.location.href = 'about:blank';
+                }
+            }
+        }
+
+        // Show warning when page loads
+        window.addEventListener('DOMContentLoaded', showContentWarning);
+
+        // Image data
+        const images = [
+            "20251015_190117.jpg",
+            "20251016_110405.jpg",
+            "20251016_145139.jpg",
+            "20251017_092841.jpg",
+            "20251017_141008.jpg",
+            "20251017_194918.jpg",
+            "20251017_222253.jpg",
+            "20251018_095035.jpg",
+            "20251018_142000.jpg",
+            "20251018_200525.jpg",
+            "20251019_074416.jpg",
+            "20251019_101034.jpg",
+            "20251019_135620.jpg",
+            "20251019_172239.jpg",
+            "20251019_184412.jpg",
+            "20251020_070809.jpg",
+            "20251020_084744.jpg",
+            "20251020_111004.jpg",
+            "20251020_143357.jpg",
+            "20251020_151810.jpg",
+            "20251021_072617.jpg",
+            "20251021_075656.jpg",
+            "20251021_142233.jpg",
+            "20251021_202035.jpg",
+            "20251021_220302.jpg",
+            "20251022_085005.jpg",
+            "20251022_102606.jpg",
+            "20251022_103404.jpg",
+            "20251022_111954.jpg",
+            "20251022_135850.jpg",
+            "20251022_173531.jpg",
+            "20251022_191351.jpg",
+            "20251022_223050.jpg",
+            "20251023_055444.jpg",
+            "20251023_081115.jpg",
+            "20251023_110236.jpg",
+            "20251023_115923.jpg",
+            "20251023_143145.jpg",
+            "20251023_163643.jpg",
+            "20251023_191202.jpg",
+            "20251024_074849.jpg",
+            "20251024_105544.jpg",
+            "20251024_165448.jpg",
+            "20251024_190953.jpg",
+            "20251025_071716.jpg",
+            "20251025_094948.jpg",
+            "20251025_155336.jpg",
+            "20251025_204047.jpg",
+            "20251026_055327.jpg",
+            "20251026_075246.jpg",
+            "20251026_155339.jpg",
+            "20251026_211824.jpg",
+            "20251027_060237.jpg",
+            "20251027_114800.jpg",
+            "20251027_203839.jpg",
+            "20251027_203926.jpg",
+            "20251028_071402.jpg",
+            "20251028_114129.jpg",
+            "20251028_171458.jpg",
+            "20251029_072130.jpg",
+            "20251029_165518.jpg",
+            "20251029_222340.jpg",
+            "20251030_071750.jpg",
+            "20251030_144815.jpg",
+            "20251030_221348.jpg",
+            "20251031_101254.jpg",
+            "20251031_165158.jpg",
+            "20251031_222940.jpg",
+            "20251101_093822.jpg",
+            "20251101_143419.jpg",
+            "20251101_221504.jpg",
+            "20251102_100900.jpg",
+            "20251102_152135.jpg",
+            "20251102_205235.jpg",
+            "20251103_080352.jpg",
+            "20251103_104859.jpg",
+            "20251103_174440.jpg",
+            "20251103_221623.jpg",
+            "20251104_073316.jpg",
+            "20251104_143841.jpg",
+            "20251104_221217.jpg",
+            "20251105_090402.jpg",
+            "20251105_170045.jpg",
+            "20251105_220438.jpg",
+            "20251106_080953.jpg",
+            "20251106_150043.jpg",
+            "20251106_221747.jpg",
+            "20251107_071418.jpg",
+            "20251107_113754.jpg",
+            "20251107_204007.jpg",
+            "20251108_073702.jpg",
+            "20251108_155717.jpg",
+            "20251108_225625.jpg",
+            "20251109_103339.jpg",
+            "20251109_105738.png",
+            "20251109_105839.jpg",
+            "20251109_201616.jpg",
+            "20251110_074541.jpg",
+            "20251110_103251.jpg",
+            "20251110_212728.jpg",
+            "20251111_071349.jpg",
+            "20251111_161635.jpg",
+            "20251111_221757.jpg",
+            "20251112_114401.jpg",
+            "20251112_221336.jpg",
+            "20251113_072720.jpg",
+            "20251113_195808.jpg",
+            "20251114_104952.jpg",
+            "20251114_162611.jpg",
+            "20251114_220747.jpg",
+            "20251115_112540.jpg",
+            "20251116_094456.jpg",
+            "20251117_115638.jpg",
+            "20251117_221622.jpg",
+            "20251118_083136.jpg",
+            "20251118_101425.jpg",
+            "20251118_201629.jpg",
+            "20251119_092851.jpg",
+            "20251119_201200.jpg",
+            "20251120_073353.jpg",
+            "20251120_200309_centered.jpg",
+            "20251121_085801.jpg",
+            "20251121_203840_centered.jpg",
+            "20251122_084910.jpg"
+        ];
+
+        // Slovak day names
+        const slovakDays = ['nedeľa', 'pondelok', 'utorok', 'streda', 'štvrtok', 'piatok', 'sobota'];
+
+        // Custom titles for specific dates (format: YYYYMMDD)
+        const customTitles = {
+            '20251018': 'Vyzeralo to sľubne, výtok sa zmenšoval, no zrazu jantárový výtok večer a ten pokračoval :(',
+            '20251019': 'Nervózne som kontroloval niekoľkokrát za deň a aj sprchoval po každej kontrole',
+            '20251020': 'Tu vidno, ako bola rana otvorená, ani náznak, že by sa to mohlo zatvárať, okraje tmavé',
+            '20251021': 'Prišiel zvýšený výtok, zľakol som sa, čo to je. Asi čistenie rany ...',
+            '20251023': 'Samý jantár',
+            '20251024': 'Po sprche som priložil suchú gázu a rana zanechala na gáze jasnú krv.',
+            '20251025': 'Ranná gáza bola zlatistá, zjavne od stafylokoka, pokračujem so striebrom a Grassolind neutral',
+            '20251026': 'Rana sa začína čistiť. Hyalurón by mal podporiť hojenie. Striebro by malo potlačiť baktérie',
+            '20251027': 'Hyalurón spôsobuje zvýšenú tvorbu výtoku, rana sa čistí, badať jantárové škvrny a malé čierne bodky',
+            '20251029': 'Výtok je viac a viac ružový, zrejme sa reštartovala tvorba tkaniva, granulácia',
+            '20251030': 'Výtok svetloružový, vodnatý, aj keď mazľavý. To robí Hyalurón.',
+            '20251103': 'Výtok sa znižuje, aj keď ešte trochu ružový',
+            '20251104': 'Opäť mierne zvýšený výtok do ružova večer, uvažujem, čo robím zle',
+            '20251106': 'Rano skoro nič, večer zvýšený. Že vraj normálne, keď sa človek pohybuje viac.',
+            '20251107': 'Neviem, čo sa stalo, rano zvýšený výtok s malou jantárovou stopou. Možno zaschnutý fibrín, neviem',
+            '20251109': 'Podarilo sa mi odfotiť kvapku krvi na rane. Zrejme som trochu porušil granuláciu, neviem.',
+            '20251110': 'Rovnaký vzor, rano menej, večer viac výtoku. Výtok riedky žltkavý',
+            '20251112': 'Tu badať kolísanie výtoku. Zrazu večer viac ako 2 dni predtým. Že vraj je to normálne.',
+            '20251114': 'Tu to vyzerá nádejne. Minimálny výtok rano aj večer, aj keď trochu ružovkavý',
+            '20251115': 'Nemám fotku z večera, ale gáza bola večer suchá aj napriek víkendu, kedy som mal viac pohybu',
+            '20251116': 'To som ešte nemal. Rano aj večer suchá gáza !',
+            '20251117': 'Zlý deň, večerný výtok sa vrátil do svetloružova. Predpokladám, že došlo k porušeniu epitelu :(',
+            '20251118': 'Klasika, rano menej, večer viac výtoku, výtok je riedky žltkavo ružový',
+        };
+
+        // Section titles and subtitles - define sections by specifying images where they start
+        // Each section will include all images from the start image until the next section starts
+        // Use 'title' for the main heading and 'subtitle' for optional descriptive text
+        const sections = {
+            // Example:
+            // '20251015_190117.jpg': { title: 'Initial Stage', subtitle: 'Documentation of initial condition' },
+            // '20251020_070809.jpg': { title: 'Week 1 Progress', subtitle: 'Treatment response and healing' },
+            '20251015_190117.jpg': { title: 'Pokus o hojenie žltou masťou', subtitle: 'Zdalo sa, že výtok začína meniť farbu, začalo pribúdať ružovej, čo som doteraz nemal ani za viac ako 3 mesiace hojenia' },
+            '20251025_071716.jpg': { title: 
+                'Výter ukázal zlatého stafylokoka. Primárny lekár mi odporúča 5. ATB, zatiaľ som skúšal 4 druhy, nič nezaberalo. Pokúšam sa to riešiť lokálne len.', 
+                subtitle: `Rana je navonok pokojná. Bez bolesti. Naša suseda lekárnička poradila lokálnu masť s hyalurónom a striebrom - Ialugen plus. 
+            `},
+            '20251031_101254.jpg': { title: 'Pokrok po 1 týždni s masťou Ialugen plus. Granulácia napreduje.', subtitle: ''},
+            '20251109_103339.jpg': { title: 'Rana má ružové okraje, vyzerá omnoho lepšie ako pred 2 týždňami, je mierne vystúpená. Začínam pociťovať uštipnutia a rôzne zvláštne pocity v rane. Že vraj je to tým, že nanovo vznikajú nervové spojenia, čo je dobré znamenie.', subtitle: 'Neviem ako tam vznikla kvapka krvi, či prúdom vody v sprche alebo drepom pri fotení, neviem :(.'},
+            '20251107_071418.jpg': { title: 'Prechádzam na hyalurónovú náplasť bez striebra, aby som minimalizoval záťaž striebrom.'},
+            '20251114_104952.jpg': {title: 'Prechádzam na Grassolind neutral, už bez hyalurónu ani striebra. K tým rôznym pocitom sa pridáva šteklenie v mieste rany', 
+            subtitle: 'Pokrok za posledný týždeň, výtok je minimálny, zmenšil sa, aj keď ešte kolíše'},
+            '20251117_115638.jpg': { title: 'Poškodenie epitelu. Najpravdepodobnejšie pri sprchovani.', subtitle: 'Zisťujem, že rana sa nesmie sprchovať prúdom vody z boku, lebo to môže narušiť epitel. To sa aj zrejme stalo :('},
+            // You can omit subtitle if not needed:
+            // '20251030_071750.jpg': { title: 'Week 3 Progress' },
+        };
+
+        // Parse filename to get date and day name
+        function parseImageDate(filename) {
+            const dateStr = filename.substring(0, 8);
+            const timeStr = filename.substring(9, 15);
+            const year = dateStr.substring(0, 4);
+            const month = dateStr.substring(4, 6);
+            const day = dateStr.substring(6, 8);
+            const hour = timeStr.substring(0, 2);
+            const minute = timeStr.substring(2, 4);
+            
+            const date = new Date(year, month - 1, day);
+            const dayName = slovakDays[date.getDay()];
+            
+            return {
+                date: date,
+                dateStr: `${day}.${month}.${year}`,
+                dayName: dayName,
+                time: `${hour}:${minute}`,
+                sortKey: dateStr
+            };
+        }
+
+        // Group images by day
+        function groupImagesByDay() {
+            const grouped = {};
+            
+            images.forEach(img => {
+                const info = parseImageDate(img);
+                if (!grouped[info.sortKey]) {
+                    grouped[info.sortKey] = {
+                        dateStr: info.dateStr,
+                        dayName: info.dayName,
+                        images: []
+                    };
+                }
+                grouped[info.sortKey].images.push(img);
+            });
+            
+            return grouped;
+        }
+
+        // Gallery order state
+        let isReversed = false;
+
+        // Create gallery HTML
+        function createGallery() {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // Clear existing content
+            const grouped = groupImagesByDay();
+            
+            // Sort by date (descending - newest first, or ascending if reversed)
+            let sortedDays = Object.keys(grouped).sort();
+            if (!isReversed) {
+                sortedDays = sortedDays.reverse();
+            }
+            
+            let currentSectionTitle = null;
+            
+            sortedDays.forEach(dayKey => {
+                const dayData = grouped[dayKey];
+                
+                // Check if any image in this day starts a new section
+                dayData.images.forEach((img, index) => {
+                    if (sections[img]) {
+                        // Add section title
+                        const sectionTitleDiv = document.createElement('div');
+                        sectionTitleDiv.className = 'section-title';
+                        sectionTitleDiv.textContent = sections[img].title;
+                        gallery.appendChild(sectionTitleDiv);
+                        currentSectionTitle = sections[img].title;
+                        
+                        // Add section subtitle if exists
+                        if (sections[img].subtitle) {
+                            const sectionSubtitleDiv = document.createElement('div');
+                            sectionSubtitleDiv.className = 'section-subtitle';
+                            sectionSubtitleDiv.textContent = sections[img].subtitle;
+                            gallery.appendChild(sectionSubtitleDiv);
+                        }
+                    }
+                    
+                    // For first image of the day, create day section
+                    if (index === 0) {
+                        const section = document.createElement('div');
+                        section.className = 'day-section';
+                        
+                        const header = document.createElement('div');
+                        header.className = 'day-header';
+                        const customTitle = customTitles[dayKey] ? ` - ${customTitles[dayKey]}` : '';
+                        header.textContent = `${dayData.dayName.charAt(0).toUpperCase() + dayData.dayName.slice(1)} - ${dayData.dateStr}${customTitle}`;
+                        section.appendChild(header);
+                        
+                        const row = document.createElement('div');
+                        row.className = 'images-row';
+                        section.appendChild(row);
+                        gallery.appendChild(section);
+                    }
+                    
+                    // Get the current row (last images-row in gallery)
+                    const allSections = gallery.querySelectorAll('.day-section');
+                    const currentSection = allSections[allSections.length - 1];
+                    const row = currentSection.querySelector('.images-row');
+                    
+                    const card = document.createElement('div');
+                    card.className = 'image-card';
+                    
+                    const image = document.createElement('img');
+                    image.src = `photos/${img}`;
+                    image.alt = img;
+                    image.loading = 'lazy';
+                    image.onclick = () => openLightbox(`ori/${img}`);
+                    
+                    const info = document.createElement('div');
+                    info.className = 'image-info';
+                    
+                    const imgInfo = parseImageDate(img);
+                    const dayInfo = document.createElement('div');
+                    dayInfo.className = 'image-day';
+                    dayInfo.textContent = `${imgInfo.dayName}, ${imgInfo.time}`;
+                    
+                    info.appendChild(dayInfo);
+                    
+                    card.appendChild(image);
+                    card.appendChild(info);
+                    
+                    row.appendChild(card);
+                });
+            });
+        }
+
+        // Lightbox functionality
+        let currentImageIndex = 0;
+        let isZoomed = false;
+
+        function openLightbox(src) {
+            const filename = src.split('/').pop();
+            currentImageIndex = images.indexOf(filename);
+            isZoomed = false;
+            showLightboxImage(currentImageIndex);
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function showLightboxImage(index) {
+            if (index < 0) index = images.length - 1;
+            if (index >= images.length) index = 0;
+            
+            currentImageIndex = index;
+            const filename = images[index];
+            const info = parseImageDate(filename);
+            
+            // Reset zoom when changing images
+            isZoomed = false;
+            updateZoomState();
+            
+            // Reset zoom icon
+            const zoomIcon = document.getElementById('zoom-icon');
+            zoomIcon.textContent = '🔍';
+            zoomIcon.title = 'Zoom originál';
+            
+            const imgElement = document.getElementById('lightbox-img');
+            imgElement.src = `photos/${filename}`;
+            document.getElementById('lightbox-filename').textContent = filename;
+            document.getElementById('lightbox-day').textContent = `${info.dayName.charAt(0).toUpperCase() + info.dayName.slice(1)} - ${info.dateStr}`;
+        }
+
+        function toggleZoom() {
+            isZoomed = !isZoomed;
+            updateZoomState();
+        }
+
+        let currentScale = 0.3;
+        let originalWidth = 0;
+        let originalHeight = 0;
+
+        function updateZoomState() {
+            const imgElement = document.getElementById('lightbox-img');
+            const container = document.getElementById('lightbox-container');
+            const zoomControls = document.getElementById('zoom-controls');
+            const filename = images[currentImageIndex];
+            
+            if (isZoomed) {
+                imgElement.src = `photos/ori/${filename}`;
+                imgElement.classList.add('zoomed');
+                container.classList.add('zoomed');
+                zoomControls.classList.add('active');
+                currentScale = 0.3;
+                
+                // Wait for image to load and get its natural dimensions
+                imgElement.onload = function() {
+                    originalWidth = this.naturalWidth;
+                    originalHeight = this.naturalHeight;
+                    applyScale();
+                };
+                
+                container.scrollTop = 0;
+                container.scrollLeft = 0;
+            } else {
+                imgElement.src = `photos/${filename}`;
+                imgElement.classList.remove('zoomed');
+                container.classList.remove('zoomed');
+                zoomControls.classList.remove('active');
+                currentScale = 0.3;
+                imgElement.style.width = '';
+                imgElement.style.height = '';
+            }
+        }
+
+        function applyScale() {
+            const imgElement = document.getElementById('lightbox-img');
+            imgElement.style.width = (originalWidth * currentScale) + 'px';
+            imgElement.style.height = (originalHeight * currentScale) + 'px';
+        }
+
+        // Drag to pan functionality
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
+
+        const container = document.getElementById('lightbox-container');
+
+        container.addEventListener('mousedown', function(e) {
+            if (!isZoomed) return;
+            const img = document.getElementById('lightbox-img');
+            if (e.target !== img) return;
+            
+            isDragging = true;
+            container.style.cursor = 'grabbing';
+            img.style.cursor = 'grabbing';
+            
+            startX = e.pageX - container.offsetLeft;
+            startY = e.pageY - container.offsetTop;
+            scrollLeft = container.scrollLeft;
+            scrollTop = container.scrollTop;
+            
+            e.preventDefault();
+        });
+
+        container.addEventListener('mouseleave', function() {
+            if (isDragging) {
+                isDragging = false;
+                if (isZoomed) {
+                    container.style.cursor = 'default';
+                    const img = document.getElementById('lightbox-img');
+                    img.style.cursor = 'grab';
+                }
+            }
+        });
+
+        container.addEventListener('mouseup', function() {
+            if (isDragging) {
+                isDragging = false;
+                if (isZoomed) {
+                    container.style.cursor = 'default';
+                    const img = document.getElementById('lightbox-img');
+                    img.style.cursor = 'grab';
+                }
+            }
+        });
+
+        container.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            const x = e.pageX - container.offsetLeft;
+            const y = e.pageY - container.offsetTop;
+            const walkX = (x - startX) * 1.5;
+            const walkY = (y - startY) * 1.5;
+            
+            container.scrollLeft = scrollLeft - walkX;
+            container.scrollTop = scrollTop - walkY;
+        });
+
+
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        function nextImage() {
+            showLightboxImage(currentImageIndex + 1);
+        }
+
+        function prevImage() {
+            showLightboxImage(currentImageIndex - 1);
+        }
+
+        // Event listeners
+        document.querySelector('.lightbox-close').onclick = function(e) {
+            e.stopPropagation();
+            closeLightbox();
+        };
+        
+        document.querySelector('.lightbox-next').onclick = function(e) {
+            e.stopPropagation();
+            nextImage();
+        };
+        
+        document.querySelector('.lightbox-prev').onclick = function(e) {
+            e.stopPropagation();
+            prevImage();
+        };
+        
+        // Zoom icon click handler
+        document.getElementById('zoom-icon').onclick = function(e) {
+            e.stopPropagation();
+            toggleZoom();
+            // Update icon
+            this.textContent = isZoomed ? '🔍−' : '🔍';
+            this.title = isZoomed ? 'Zmenšiť' : 'Zoom originál';
+        };
+
+        // Zoom in button
+        document.getElementById('zoom-in-btn').onclick = function(e) {
+            e.stopPropagation();
+            if (!isZoomed || originalWidth === 0) return;
+            const container = document.getElementById('lightbox-container');
+            
+            // Store current center position relative to image
+            const scrollCenterX = (container.scrollLeft + container.clientWidth / 2) / currentScale;
+            const scrollCenterY = (container.scrollTop + container.clientHeight / 2) / currentScale;
+            
+            currentScale = Math.min(currentScale + 0.25, 3);
+            applyScale();
+            
+            // Recalculate scroll position to keep the same point centered
+            setTimeout(() => {
+                container.scrollLeft = scrollCenterX * currentScale - container.clientWidth / 2;
+                container.scrollTop = scrollCenterY * currentScale - container.clientHeight / 2;
+            }, 10);
+        };
+
+        // Zoom out button
+        document.getElementById('zoom-out-btn').onclick = function(e) {
+            e.stopPropagation();
+            if (!isZoomed || originalWidth === 0) return;
+            const container = document.getElementById('lightbox-container');
+            
+            // Store current center position relative to image
+            const scrollCenterX = (container.scrollLeft + container.clientWidth / 2) / currentScale;
+            const scrollCenterY = (container.scrollTop + container.clientHeight / 2) / currentScale;
+            
+            currentScale = Math.max(currentScale - 0.25, 0.5);
+            applyScale();
+            
+            // Recalculate scroll position to keep the same point centered
+            setTimeout(() => {
+                container.scrollLeft = scrollCenterX * currentScale - container.clientWidth / 2;
+                container.scrollTop = scrollCenterY * currentScale - container.clientHeight / 2;
+            }, 10);
+        };
+        
+        // Lightbox can only be closed by clicking X button or pressing Escape
+        // Removed background click to close functionality
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Reverse order toggle
+        document.getElementById('reverseButton').addEventListener('click', function() {
+            isReversed = !isReversed;
+            this.classList.toggle('reversed');
+            document.getElementById('orderText').textContent = isReversed ? 'Najstaršie prvé' : 'Najnovšie prvé';
+            createGallery();
+        });
+
+        // Initialize gallery
+        createGallery();
+    </script>
+</body>
+</html>

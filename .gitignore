@@ -1,0 +1,8 @@
+# Batch files
+*.bat
+
+# Thumbnails
+Thumbs.db
+
+# System files
+.DS_Store
