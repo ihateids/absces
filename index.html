@@ -134,6 +134,42 @@
         transform: rotate(180deg);
       }
 
+      .podcast-section {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .podcast-title {
+        color: #667eea;
+        margin-bottom: 15px;
+        font-size: 1.4em;
+        font-weight: 600;
+      }
+
+      .podcast-description {
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        font-size: 0.95em;
+      }
+
+      .audio-player {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        outline: none;
+      }
+
+      .audio-player::-webkit-media-controls-panel {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+      }
+
       .section-title {
         font-size: 1.8em;
         color: #2c3e50;
@@ -581,6 +617,17 @@
     <div class="container">
       <h1>Oneskorené hojenie perianálneho abscesu</h1>
 
+      <!-- Podcast Section -->
+      <div class="podcast-section">
+        <p class="podcast-description">
+          Počúvajte zaujímavý AI generovaný podcast, v ktorom je diskutovaný tento príbeh.
+        </p>
+        <audio class="audio-player" controls>
+          <source src="assets/podcast.m4a" type="audio/mp4">
+          Váš prehliadač nepodporuje audio element.
+        </audio>
+      </div>
+
       <div class="intro-text">
         <p>
           Tento príbeh začína po takmer <strong>4 mesiacoch</strong> od vzniku
@@ -838,8 +885,8 @@
         const galleryContent = document.getElementById('galleryContent');
         const showGallery = getCookie('showGallery');
         
-        // Restore previous state from cookie, default to showing gallery
-        if (showGallery === 'true' || showGallery === null) {
+        // Restore previous state from cookie
+        if (showGallery === 'true') {
           checkbox.checked = true;
           galleryContent.classList.add('visible');
         }
