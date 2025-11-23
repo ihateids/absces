@@ -838,8 +838,8 @@
         const galleryContent = document.getElementById('galleryContent');
         const showGallery = getCookie('showGallery');
         
-        // Restore previous state from cookie
-        if (showGallery === 'true') {
+        // Restore previous state from cookie, default to showing gallery
+        if (showGallery === 'true' || showGallery === null) {
           checkbox.checked = true;
           galleryContent.classList.add('visible');
         }
