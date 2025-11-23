@@ -176,7 +176,7 @@
       }
 
       .day-header {
-        font-size: 1.4em;
+        font-size: 1em;
         color: #2c3e50;
         margin-bottom: 12px;
         padding-bottom: 8px;
@@ -520,6 +520,61 @@
           max-width: 95%;
         }
       }
+
+      /* Gallery toggle styles */
+      .gallery-toggle {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff8dc;
+        border: 2px solid #ffc107;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .gallery-checkbox-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 15px;
+      }
+
+      .gallery-checkbox {
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        cursor: pointer;
+        accent-color: #667eea;
+      }
+
+      .gallery-checkbox-label {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
+        flex: 1;
+      }
+
+      .gallery-warning {
+        color: #d63384;
+        font-size: 0.95em;
+        line-height: 1.4;
+        margin-top: 10px;
+      }
+
+      .gallery-warning strong {
+        color: #c02952;
+      }
+
+      .gallery-content {
+        display: none;
+      }
+
+      .gallery-content.visible {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -719,13 +774,25 @@
         <i>MK</i>
       </div>
 
-      <div class="controls">
+      <div class="gallery-toggle">
+        <div class="gallery-checkbox-container">
+          <input type="checkbox" id="galleryCheckbox" class="gallery-checkbox">
+          <label for="galleryCheckbox" class="gallery-checkbox-label">Zobraziť fotogalériu</label>
+        </div>
+        <div class="gallery-warning">
+          <strong>⚠️ Upozornenie na citlivý obsah:</strong> Fotogaléria obsahuje fotografie hojenia perianálnej rany, ktoré môžu byť pre niektorých ľudí znepokojujúce alebo nepríjemné. Kliknutím na checkbox potvrdzujete, že chcete zobraziť tento obsah.
+        </div>
+      </div>
+
+      <div class="gallery-content" id="galleryContent">
+        <div class="controls">
         <button class="reverse-button" id="reverseButton">
           <span class="reverse-icon">↓</span>
           <span id="orderText">Najnovšie prvé</span>
         </button>
+        </div>
+        <div id="gallery"></div>
       </div>
-      <div id="gallery"></div>
     </div>
 
     <!-- Lightbox -->
@@ -750,7 +817,7 @@
     </div>
 
     <script>
-      // Content warning functionality
+      // Cookie functionality
       function getCookie(name) {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
@@ -765,26 +832,32 @@
         document.cookie = `${name}=${value};${expires};path=/`;
       }
 
-      function showContentWarning() {
-        const accepted = getCookie("contentWarningAccepted");
-        if (!accepted) {
-          const userAccepted = confirm(
-            "UPOZORNENIE: Táto stránka obsahuje lekárske fotografie, ktoré môžu byť pre niektorých ľudí znepokojujúce alebo nepríjemné.\n\n" +
-              "Fotografie zobrazujú hojenie perianálnej rany a môžu obsahovať citlivý obsah.\n\n" +
-              "Kliknutím na OK potvrdzujete, že chcete pokračovať."
-          );
-
-          if (userAccepted) {
-            setCookie("contentWarningAccepted", "true", 30); // Cookie valid for 30 days
-          } else {
-            // Redirect to a blank page or close window if user declines
-            window.location.href = "about:blank";
-          }
+      // Gallery toggle functionality
+      function initializeGalleryToggle() {
+        const checkbox = document.getElementById('galleryCheckbox');
+        const galleryContent = document.getElementById('galleryContent');
+        const showGallery = getCookie('showGallery');
+        
+        // Restore previous state from cookie
+        if (showGallery === 'true') {
+          checkbox.checked = true;
+          galleryContent.classList.add('visible');
         }
+        
+        // Add event listener for checkbox changes
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            galleryContent.classList.add('visible');
+            setCookie('showGallery', 'true', 30); // Cookie valid for 30 days
+          } else {
+            galleryContent.classList.remove('visible');
+            setCookie('showGallery', 'false', 30);
+          }
+        });
       }
 
-      // Show warning when page loads
-      window.addEventListener("DOMContentLoaded", showContentWarning);
+      // Initialize gallery toggle when page loads
+      window.addEventListener("DOMContentLoaded", initializeGalleryToggle);
 
       // Image data
       const images = [
@@ -912,6 +985,8 @@
         "20251121_085801.jpg",
         "20251121_203840_centered.jpg",
         "20251122_084910.jpg",
+        "20251122_205301.jpg",
+        "20251123_090406.jpg",
       ];
 
       // Slovak day names
@@ -952,24 +1027,29 @@
         20251104:
           "Opäť mierne zvýšený výtok do ružova večer, uvažujem, čo robím zle",
         20251106:
-          "Rano skoro nič, večer zvýšený. Že vraj normálne, keď sa človek pohybuje viac.",
+          "Ráno skoro nič, večer zvýšený. Že vraj normálne, keď sa človek pohybuje viac.",
         20251107:
-          "Neviem, čo sa stalo, rano zvýšený výtok s malou jantárovou stopou. Možno zaschnutý fibrín, neviem",
+          "Neviem, čo sa stalo, ráno zvýšený výtok s malou jantárovou stopou. Možno zaschnutý fibrín, neviem",
         20251109:
           "Podarilo sa mi odfotiť kvapku krvi na rane. Zrejme som trochu porušil granuláciu, neviem.",
         20251110:
-          "Rovnaký vzor, rano menej, večer viac výtoku. Výtok riedky žltkavý",
+          "Rovnaký vzor, ráno menej, večer viac výtoku. Výtok riedky žltkavý",
         20251112:
           "Tu badať kolísanie výtoku. Zrazu večer viac ako 2 dni predtým. Že vraj je to normálne.",
         20251114:
-          "Tu to vyzerá nádejne. Minimálny výtok rano aj večer, aj keď trochu ružovkavý",
+          "Tu to vyzerá nádejne. Minimálny výtok ráno aj večer, aj keď trochu ružovkavý",
         20251115:
           "Nemám fotku z večera, ale gáza bola večer suchá aj napriek víkendu, kedy som mal viac pohybu",
         20251116: "To som ešte nemal. Rano aj večer suchá gáza !",
         20251117:
-          "Zlý deň, večerný výtok sa vrátil do svetloružova. Predpokladám, že došlo k porušeniu epitelu :(",
+          "Zlý deň, večerný výtok sa vrátil do svetloružova. Predpokladám, že došlo k porušeniu epitelu :(. Nebadať hustejší výtok.",
         20251118:
-          "Klasika, rano menej, večer viac výtoku, výtok je riedky žltkavo ružový",
+          "Klasika, ráno menej, večer viac výtoku, výtok je mierne hustejší žltkavo ružový, zrejme z presakujúcej krvi z nových cievok v epitele",
+        20251119: "Tu sa za celý deň nič nezmenilo, ráno aj večer takmer rovnako",
+          20251121: "Dva dni po sebe ráno aj večer takmer identický výtok",
+          20251122:"Večer zvýšený výtok, stále takmer riedky, žltkavo-ružový. Zdá sa akoby bol len z časti rany pri polkách. Tu sa to hojí najpomalšie.",
+
+          20251123: "Ráno podobný výtok ako včera. Vyzerajú 2 len preto, lebo bola gáza v mieste rany zložená"
       };
 
       // Section titles and subtitles - define sections by specifying images where they start
@@ -1131,10 +1211,10 @@
             card.className = "image-card";
 
             const image = document.createElement("img");
-            image.src = `photos/${img}`;
+            image.src = `photos/thumb/${img}`;
             image.alt = img;
             image.loading = "lazy";
-            image.onclick = () => openLightbox(`ori/${img}`);
+            image.onclick = () => openLightbox(`${img}`);
 
             const info = document.createElement("div");
             info.className = "image-info";
@@ -1207,7 +1287,7 @@
         const filename = images[currentImageIndex];
 
         if (isZoomed) {
-          imgElement.src = `photos/ori/${filename}`;
+          imgElement.src = `photos/${filename}`;
           imgElement.classList.add("zoomed");
           container.classList.add("zoomed");
           zoomControls.classList.add("active");
@@ -1407,8 +1487,10 @@
           createGallery();
         });
 
-      // Initialize gallery
-      createGallery();
+      // Initialize gallery when DOM is loaded
+      window.addEventListener("DOMContentLoaded", function() {
+        createGallery();
+      });
     </script>
   </body>
 </html>
