@@ -456,9 +456,10 @@
     }
 
     .lightbox-filename {
-      font-weight: bold;
-      font-size: 1.1em;
-      margin-bottom: 5px;
+      font-weight: normal;
+      font-size: 0.75em;
+      margin-top: 4px;
+      color: #eee;
     }
 
     .lightbox-day {
@@ -936,8 +937,8 @@
     <div class="lightbox-container" id="lightbox-container">
       <img class="lightbox-content" id="lightbox-img" />
       <div class="lightbox-info">
-        <div class="lightbox-filename" id="lightbox-filename"></div>
         <div class="lightbox-day" id="lightbox-day"></div>
+        <div class="lightbox-filename" id="lightbox-filename"></div>
       </div>
     </div>
   </div>
@@ -1124,6 +1125,13 @@
       "20251127_085537.jpg",
       "20251127_203359.jpg",
       "20251128_081348.jpg",
+      "20251128_210926.jpg",
+      "20251129_081500.jpg",
+      "20251129_200122.jpg",
+      "20251130_084104.jpg",
+      "20251201_074138.jpg",
+      "20251201_203840.jpg",
+      "20251202_084855.jpg",
     ];
 
     // Slovak day names
@@ -1192,7 +1200,10 @@
       20251126: "Opäť musím zavrieť epitel. Šteklenie zmizlo, rana bez pocitov, výtok ružovkastý.",
       20251127: "Ráno menej, večer viac. Mení sa do svetlo-žltej, mierne redší. Podobne to vyzeralo 4 dni dozadu pred poškodením epitelu. Akoby to hojenie malo rovnaký priebeh.",
       20251128: "Dnes dosť výrazné šteklenie pri chodení. Vyzerá že výtok je len z jednej časti rany",
-      
+      20251129: "Ráno minimálny výtok, večer opäť viac. Ružovastý, redší.",
+      20251130: "Ráno takmer suchá gáza, večer asi 0.5 cm2 svetložtý, ale nemám foto. Počas dňa mierne šteklenie",
+      20251201: "Ráno opäť takmer suchá gáza, večer asi 1 cm2. Šteklenie doobeda, poobede tamer žiadne.",
+      20251202: "Ráno minimálny výtok, cez deň viac šteklenia, večer uvidíme ...",
     };
 
     // Section titles and subtitles - define sections by specifying images where they start
@@ -1235,7 +1246,7 @@
           "Pokrok za posledný týždeň, výtok je minimálny, zmenšil sa, aj keď ešte kolíše",
       },
       "20251117_115638.jpg": {
-        title: "Poškodenie epitelu. Najpravdepodobnejšie pri sprchovani.",
+        title: "Poškodenie epitelu. Spätne som si uvedomil že som pri sprchovaní pocítil uštipnutie",
         subtitle:
           "Zisťujem, že rana sa nesmie sprchovať prúdom vody z boku, lebo to môže narušiť epitel. To sa aj zrejme stalo :(",
       },
@@ -1414,8 +1425,7 @@
       const imgElement = document.getElementById("lightbox-img");
       imgElement.src = `photos/${filename}`;
       document.getElementById("lightbox-filename").textContent = filename;
-      document.getElementById("lightbox-day").textContent = `${info.dayName.charAt(0).toUpperCase() + info.dayName.slice(1)
-        } - ${info.dateStr}`;
+      document.getElementById("lightbox-day").textContent = `${info.dayName.charAt(0).toUpperCase() + info.dayName.slice(1)} ${info.dateStr}, ${info.time}`;
     }
 
     function toggleZoom() {
